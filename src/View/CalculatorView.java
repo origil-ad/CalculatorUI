@@ -25,7 +25,6 @@ public class CalculatorView extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new Dimension(SIZE, SIZE));
         setVisible(true);
-
     }
 
     public void addText(String actionCommand) {
@@ -34,20 +33,12 @@ public class CalculatorView extends JFrame {
         _textField.setText(tmp);
     }
 
-    public void addPlusListener(ActionListener actionListener){
-        ((ButtonsPanel)_buttonsPannel).addPlusListener(actionListener);
-    }
-
-    public void addMinusListener(ActionListener actionListener){
-        ((ButtonsPanel)_buttonsPannel).addMinusListener(actionListener);
-    }
-
-    public void addMultiplyListener(ActionListener actionListener){
-        ((ButtonsPanel)_buttonsPannel).addMultiplyListener(actionListener);
-    }
-
-    public void addDivideListener(ActionListener actionListener){
-        ((ButtonsPanel)_buttonsPannel).addDivideListener(actionListener);
+    public void addOperatorsListeners(ActionListener actionListener){
+        var panel = ((ButtonsPanel)_buttonsPannel);
+        panel.addPlusListener(actionListener);
+        panel.addMinusListener(actionListener);
+        panel.addMultiplyListener(actionListener);
+        panel.addDivideListener(actionListener);
     }
 
     public void addDotListener(ActionListener actionListener){
@@ -64,5 +55,13 @@ public class CalculatorView extends JFrame {
 
     public void addNumbersListeners(ActionListener buttonClickedListener) {
         ((ButtonsPanel)_buttonsPannel).addNumbersListeners(buttonClickedListener);
+    }
+
+    public String getNumber() {
+        return _textField.getText();
+    }
+
+    public void setNumber(String num){
+        _textField.setText(num);
     }
 }
